@@ -146,6 +146,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 label: 'Show Now',
                 icon: Icons.send,
                 onPressed: () async {
+                  if (!controller.hasPermission) {
+                    _showSnackBar('Notification permission denied');
+                    return;
+                  }
                   await controller.showInstantNotification();
                   _showSnackBar('Instant notification sent!');
                 },
@@ -164,6 +168,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     label: 'In 5 Seconds',
                     icon: Icons.timer,
                     onPressed: () async {
+                      if (!controller.hasPermission) {
+                        _showSnackBar('Notification permission denied');
+                        return;
+                      }
                       await controller.scheduleNotification5Seconds();
                       _showSnackBar('Notification scheduled for 5 seconds!');
                     },
@@ -173,6 +181,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     label: 'In 30 Seconds',
                     icon: Icons.timer_outlined,
                     onPressed: () async {
+                      if (!controller.hasPermission) {
+                        _showSnackBar('Notification permission denied');
+                        return;
+                      }
                       await controller.scheduleNotification30Seconds();
                       _showSnackBar('Notification scheduled for 30 seconds!');
                     },
@@ -182,6 +194,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     label: 'Pick a Time',
                     icon: Icons.access_time,
                     onPressed: () async {
+                      if (!controller.hasPermission) {
+                        _showSnackBar('Notification permission denied');
+                        return;
+                      }
                       final pickedTime = await AdaptiveTimePicker.show(context);
 
                       if (pickedTime != null && context.mounted) {

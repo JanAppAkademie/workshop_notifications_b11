@@ -65,4 +65,3 @@ class AdaptiveTimePicker {
     return null;
   }
 }
-

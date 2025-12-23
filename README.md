@@ -18,7 +18,7 @@
 
 ### Android
 
--System Permissions 2x, dann endgültig
+- System Permissions 2x, dann endgültig
 
 - Vor Android 12: Opt-out (standardmäßig aktiv)
 - Ab Android 13: Opt-in (standardmäßig deaktiviert)
@@ -54,7 +54,8 @@ const AndroidNotificationChannel marketingChannel = AndroidNotificationChannel(
 - Notifications categories (Vorlagen), die festlegen welche Aktions-Buttons eine Notification haben kann https://cocoacasts.com/actionable-notifications-with-the-user-notifications-framework
 
 
-- Zustände
+## Zustände
+
     - Foreground 
         - iOS: Notification wird nicht angezeigt - kann bei FCM anders konfiguriert werden
         - Android: Notification erscheint normal

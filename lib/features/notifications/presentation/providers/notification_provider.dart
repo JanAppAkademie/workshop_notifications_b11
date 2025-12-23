@@ -8,6 +8,8 @@ final notificationServiceProvider = Provider<NotificationService>((ref) {
 
 final notificationIdProvider = StateProvider<int>((ref) => 0);
 
+final notificationPermissionGrantedProvider = StateProvider<bool>((ref) => false);
+
 final notificationControllerProvider = Provider<NotificationController>((ref) {
   return NotificationController(ref);
 });
@@ -26,8 +28,12 @@ class NotificationController {
   }
 
   Future<bool> requestPermissions() async {
-    return await _service.requestPermissions();
+    final granted = await _service.requestPermissions();
+    _ref.read(notificationPermissionGrantedProvider.notifier).state = granted;
+    return granted;
   }
+
+  bool get hasPermission => _ref.read(notificationPermissionGrantedProvider);
 
   Future<void> showInstantNotification() async {
     final id = _getNextId();
